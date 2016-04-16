@@ -1,0 +1,14 @@
+<c3p0-config>
+	<default-config>
+		<property name="user">root</property>
+		<property name="password">wang3775!@#$asdf</property>
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<!-- <property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/yungou_assist?characterEncoding=utf-8-->
+		<property name="jdbcUrl">jdbc:mysql://115.159.23.124:3306/yungou_assist?characterEncoding=utf-8
+		</property>
+		<property name="initialPoolSize">10</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">300</property>
+		<property name="minPoolSize">10</property>
+	</default-config>
+</c3p0-config>

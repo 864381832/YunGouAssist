@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.multipart.maxSize" value="10701096" />
+
+	<package name="default" namespace="/" extends="struts-default">
+		<default-action-ref name="index" />
+		<action name="index" class="com.artifact.action.IndexAction">
+			<result name="success">
+				WEB-INF/index.jsp
+			</result>
+			<result name="downloadUrl">
+				WEB-INF/page/downloadUrl.jsp
+			</result>
+			<result name="loginManager" type="chain">
+				<param name="actionName">managerAction_rootManager</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="agentManager" type="chain">
+				<param name="actionName">managerAction_agentManager</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		<action name="managerAction_*" class="com.artifact.action.ManagerAction"
+			method="{1}">
+			<result name="success">
+				WEB-INF/ManagerESB/managerIndex.jsp
+			</result>
+			<result name="agentManagerIndex">
+				WEB-INF/ManagerESB/agentManagerIndex.jsp
+			</result>
+			<result name="renewPage">
+				WEB-INF/ManagerESB/renewPage.jsp
+			</result>
+			<result name="renewTwoPage">
+				WEB-INF/ManagerESB/renewTwoPage.jsp
+			</result>
+			<result name="userGeneralizePage">
+				WEB-INF/ManagerESB/userGeneralizePage.jsp
+			</result>
+			<result name="renewExpirationUserPage">
+				WEB-INF/ManagerESB/renewExpirationUserPage.jsp
+			</result>
+			<result name="renewFutureExpirationUserPage">
+				WEB-INF/ManagerESB/renewFutureExpirationUserPage.jsp
+			</result>
+			<result name="renewByDayPage">
+				WEB-INF/ManagerESB/renewByDayPage.jsp
+			</result>
+			<result name="error">
+				WEB-INF/index.jsp
+			</result>
+			<result name="error" type="chain">
+				<param name="actionName">index</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		<action name="adminAction_*" class="com.artifact.action.AdminAction"
+			method="{1}">
+			<result name="success">
+				WEB-INF/AdminManager/managerAgent.jsp
+			</result>
+			<result name="error">
+				WEB-INF/index.jsp
+			</result>
+			<result name="error" type="chain">
+				<param name="actionName">index</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		<action name="userAjax_*" class="com.artifact.ajax.UserAjax"
+			method="{1}">
+		</action>
+		<action name="adminAjax_*" class="com.artifact.ajax.AdminAjax"
+			method="{1}"></action>
+		<action name="managerAjax_*" class="com.artifact.ajax.ManagerAjax"
+			method="{1}"></action>
+		<action name="yungouPublishAjax_*" class="com.artifact.ajax.YungouPublishAjax"
+			method="{1}">
+		</action>
+	</package>
+</struts>

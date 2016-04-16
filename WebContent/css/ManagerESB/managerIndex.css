@@ -1,0 +1,167 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	font-size: 14px;
+	color: #ffffff;
+	font-family: "Microsoft Yahei", "宋体", verdana, tahoma, helvetica, arial,
+		sans-serif;
+}
+
+.body {
+	background-color: #295A85;
+}
+
+.tableDiv {
+	width: 1300px;
+	margin: 10px auto;
+	text-align: center;
+}
+
+.selectDiv {
+	height: 40px;
+	border: 0px solid #C1CBDA;
+	text-align: center;
+}
+
+.selectDiv input {
+	width: 80px;
+	padding: 3px 10px;
+	margin: 10px 5px 10px 5px;
+	background-color: #67B36A;
+	border: 0px;
+	outline: none;
+}
+
+.selectDiv input:HOVER {
+	cursor: pointer;
+}
+
+.selectDiv input:active {
+	background-color: #50A15A;
+}
+
+#selectTextId {
+	color: #FA2103;
+	width: 300px;
+}
+
+#selectTextId:HOVER {
+	cursor: default;
+}
+
+#addNum {
+	color: #FA2103;
+	width: 120px;
+}
+
+#addNum:HOVER {
+	cursor: default;
+}
+
+.selectDiv a {
+	width: 80px;
+	padding: 3px 5px;
+	margin: 10px 2px 10px 2px;
+	background-color: #67B36A;
+	border: 0px;
+	outline: none;
+}
+
+.selectDiv a:HOVER {
+	cursor: pointer;
+}
+
+.selectDiv a:active {
+	background-color: #50A15A;
+}
+
+.exitA {
+	text-decoration: none;
+	float: right;
+}
+
+.tableDiv h1 {
+	font-size: 20px;
+	margin: 10px;
+}
+
+.tableDiv h1 lable{
+	font-size: 14px;
+	color: #67B36A;
+}
+
+.tableDiv table {
+	width: 1300px;
+	text-align: center;
+	border-collapse: collapse; /*边框合并属性*/
+}
+
+.tableDiv table th {
+	border: 2px solid;
+	padding: 4px;
+}
+
+.tableDiv table th:HOVER {
+	cursor: pointer;
+}
+
+.tableDiv table td {
+	border: 2px solid;
+	padding: 4px 2px;
+}
+
+.tableDiv table tr:HOVER {
+	background-color: #67B36A;
+}
+
+.phoneIdTd:HOVER {
+	cursor: pointer;
+}
+
+.userInfoIdTd:HOVER {
+	cursor: pointer;
+}
+
+.remarksInfoIdTd:HOVER {
+	cursor: pointer;
+}
+
+.registerA {
+	color: #FF0080;
+}
+
+.registerA:HOVER {
+	cursor: pointer;
+}
+
+.notPassA {
+	color: #FF0080;
+}
+
+.notPassA:HOVER {
+	cursor: pointer;
+}
+
+.pageButtonDiv {
+	margin-top: 20px;
+}
+
+.upPageDiv {
+	display: inline;
+}
+
+.aNumPageDiv {
+	display: inline;
+}
+
+.downPageDiv {
+	display: inline;
+}
+
+.currentANumPage {
+	color: #FF0080;
+}
+
+.aNumPage {
+	
+}

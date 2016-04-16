@@ -1,0 +1,76 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	font-size: 14px;
+	font-family: "Microsoft Yahei", "宋体", verdana, tahoma, helvetica, arial,
+		sans-serif;
+}
+
+.body {
+	background-color: #295A85;
+}
+
+.mainDiv {
+	background-image: url("../images/logoBack.png");
+	margin: 100px auto;
+	width: 800px;
+	height: 518px;
+}
+
+.inputFormDiv {
+	float: left;
+	margin: 274px 160px;
+	height: 55px;
+	width: 500px;
+}
+
+.downloadUrlA {
+	color:#FF0012;
+	position:absolute;
+	margin:-40px 0px 0px 460px;
+	text-decoration: none;
+}
+
+.nameInput {
+	float: left;
+	width: 160px;
+	text-align: left;
+	color: #BCBCBC;
+	font-size: 15px;
+	margin: 10px 10px 10px 10px;
+	padding-left: 5px;
+	height: 30px;
+}
+
+.passwordInput {
+	float: left;
+	width: 160px;
+	text-align: left;
+	color: #BCBCBC;
+	font-size: 15px;
+	margin: 10px 10px 10px 10px;
+	padding-left: 5px;
+	height: 30px;
+}
+
+.loginButton {
+	float: left;
+	background-image: url("../images/loginButton.png");
+	margin: 10px 10px 10px 30px;
+	width: 100px;
+	height: 30px;
+	border: 0px;
+	background-color: transparent;
+	outline: none;
+}
+
+.loginButton:ACTIVE {
+	background-image: url("../images/loginButton2.png");
+}
+
+.errorDiv {
+	float: left;
+	font-size: 20;
+	color: #CA0000;
+	margin: 20px 10px;
+}
