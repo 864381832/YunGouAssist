@@ -1,8 +1,6 @@
 package com.artifact.yungou;
 
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -46,17 +44,20 @@ public class CacheData {
 			if (yungouPublishCacheDateMap.get(codePeriod) == null) {
 				yungouPublishCacheDateMap.put(codePeriod, yungouPublish);
 				if (yungouPublishCacheDateMap.size() > 50) {
-					int selectIndex = 0;
-					Set<Integer> IntSet = new TreeMap<>(yungouPublishCacheDateMap).keySet();
-					for (Integer periodIndex : IntSet) {
-						// System.out.println("数据" + periodIndex + ":"
-						// +
-						// yungouPublishCacheDate.get(goodsID).get(periodIndex).getCodeRNO());
-						if (selectIndex >= 50) {
-							yungouPublishCacheDateMap.remove(periodIndex);
-						}
-						selectIndex++;
-					}
+					yungouPublishCacheDateMap.pollLastEntry();
+					// int selectIndex = 0;
+					// Set<Integer> IntSet = new
+					// TreeMap<>(yungouPublishCacheDateMap).keySet();
+					// for (Integer periodIndex : IntSet) {
+					// // System.out.println("数据" + periodIndex + ":"
+					// // +
+					// //
+					// yungouPublishCacheDate.get(goodsID).get(periodIndex).getCodeRNO());
+					// if (selectIndex >= 50) {
+					// yungouPublishCacheDateMap.remove(periodIndex);
+					// }
+					// selectIndex++;
+					// }
 				}
 			}
 		}

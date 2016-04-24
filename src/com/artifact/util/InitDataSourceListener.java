@@ -19,15 +19,15 @@ public class InitDataSourceListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
 		System.out.println("应用启动，初始化数据");
-		
-//		ReadXml.initPhoneInfoXML(arg0.getServletContext());
-		
+
+		// ReadXml.initPhoneInfoXML(arg0.getServletContext());
+
 		JdbcUtil.initDataSource();
-		
-//		YungouMonitoringServer.selectGoodsInfo();
-		//		YungouMonitoringServer.selectYungouRecord();
-		
-//		ManagerAjaxServicesImpl.getManagerAjaxServices().addUserTime();
+
+		// YungouMonitoringServer.selectGoodsInfo();
+		// YungouMonitoringServer.selectYungouRecord();
+
+		// ManagerAjaxServicesImpl.getManagerAjaxServices().addUserTime();
 	}
 
 }
