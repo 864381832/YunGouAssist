@@ -136,24 +136,28 @@ public class UserAjaxServicesImpl implements UserAjaxServices {
 		User user = userDao.getUser(userid);
 		long nowTimeLong = System.currentTimeMillis();
 		if (user == null) {
-			BigInteger expirationTime = BigInteger.valueOf(7 * 24 * 60 * 60 * 1000);
+			BigInteger expirationTime = BigInteger.valueOf(30 * 60 * 1000);
 			expirationTime = expirationTime.add(BigInteger.valueOf(nowTimeLong));
 			Date nowTime = new Date(expirationTime.longValue());
 			userDao.addUser(userid, password, nowTime, userInfo, "");
 			userDao.addUserPhoneId(userid, isLogin);
 			userDao.userLogin(userid, nowTime);
 
-			CacheSelectData.addtUserCache(userid, new User(userid, password, nowTime, isLogin));
+			User userCahe = new User(userid, password, nowTime, isLogin);
+			userCahe.setUserType(1);
+			CacheSelectData.addtUserCache(userid, userCahe);
 			return loginSuccess(userid, nowTime.getTime());// 登录成功
 		} else {
 			userDao.updatePassword(userid, password);
 			if (nowTimeLong > user.getExpirationTime().getTime()) {
+				CacheSelectData.removeUserCache(userid);
 				return "802";// 账户已过期
 			} else {
 				userDao.addUserPhoneId(userid, isLogin);
 				userDao.userLogin(userid, new Date(nowTimeLong));
 
 				user.setPhoneId(isLogin);
+				user.setPassword(password);
 				CacheSelectData.addtUserCache(userid, user);
 				return loginSuccess(userid, user.getExpirationTime().getTime());// 登录成功
 			}
@@ -227,7 +231,7 @@ public class UserAjaxServicesImpl implements UserAjaxServices {
 			UserGeneralize userGeneralize = userGeneralizeDao.getUserGeneralize(userInfo);
 			if (userGeneralize != null && userGeneralize.getIsGetRewards() == 0) {
 				User user = userDao.getUser(userid);
-				if (userGeneralize.getGeneralizeId().equals("" + (user.getId() + 100000))) {
+				if (userGeneralize.getGeneralizeId().equals(Integer.toString(user.getId() + 100000))) {
 					long addTime = user.getExpirationTime().getTime();
 					userDao.addUserUsingTime(userid, 3, ActionUtil.getExpirationDate(addTime, 3));
 					userGeneralizeDao.updateIsGetRewards(userInfo);
@@ -242,15 +246,16 @@ public class UserAjaxServicesImpl implements UserAjaxServices {
 	public String getUserGeneralize(String userid) {
 		User user = userDao.getUser(userid);
 		if (user != null) {
-			return "" + (user.getId() + 100000);
+			return Integer.toString(user.getId() + 100000);
 		}
 		return null;
 	}
 
 	@Override
 	public boolean getIsBuyAssist(String userid) {
-		if (renewDao.getRenew(userid) != null) {
-			return true;
+		try {
+			return renewDao.getRenew(userid) != null;
+		} catch (Exception e) {
 		}
 		return false;
 	}

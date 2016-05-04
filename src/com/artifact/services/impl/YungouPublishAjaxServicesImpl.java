@@ -76,7 +76,7 @@ public class YungouPublishAjaxServicesImpl implements YungouPublishAjaxServices 
 						// System.out.println("数据" +
 						// yungouPublish.getCodePeriod() + ":" +
 						// yungouPublish.getCodeRNO());
-						if (selectIndex <= selectNum) {
+						if (selectIndex < selectNum) {
 							stringList.add(yungouPublish.getYungouPublishInfo());
 							selectIndex++;
 						}
@@ -85,9 +85,13 @@ public class YungouPublishAjaxServicesImpl implements YungouPublishAjaxServices 
 			} else {
 				YungouPublish yungouPublish = CacheData.getYungouPublishCacheDate(goodsID, codePeriod);
 				if (yungouPublish == null) {
-					yungouPublish = yungouPublishDao.getYungouPublish(goodsID, codePeriod);
-					if (yungouPublish != null) {
-						CacheData.setYungouPublishCacheDate(goodsID, codePeriod, yungouPublish);
+					TreeMap<Integer, YungouPublish> yungouPublishCacheDateMap = CacheData
+							.getYungouPublishCacheDate(goodsID);
+					if (yungouPublishCacheDateMap.lastKey() > codePeriod) {
+						yungouPublish = yungouPublishDao.getYungouPublish(goodsID, codePeriod);
+						if (yungouPublish != null) {
+							CacheData.setYungouPublishCacheDate(goodsID, codePeriod, yungouPublish);
+						}
 					}
 				}
 				if (yungouPublish != null) {

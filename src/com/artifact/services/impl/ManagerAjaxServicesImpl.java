@@ -7,6 +7,7 @@ import com.artifact.dao.RenewDao;
 import com.artifact.dao.UserDao;
 import com.artifact.dao.impl.RenewDaoImpl;
 import com.artifact.dao.impl.UserDaoImpl;
+import com.artifact.global.CacheSelectData;
 import com.artifact.model.Renew;
 import com.artifact.model.User;
 import com.artifact.services.ManagerAjaxServices;
@@ -63,6 +64,7 @@ public class ManagerAjaxServicesImpl implements ManagerAjaxServices {
 
 	@Override
 	public boolean deleteUser(String userid) {
+		CacheSelectData.removeUserCache(userid);
 		return userDao.deleteUser(userid);
 	}
 
