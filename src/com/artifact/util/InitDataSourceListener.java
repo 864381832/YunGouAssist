@@ -24,10 +24,9 @@ public class InitDataSourceListener implements ServletContextListener {
 
 		JdbcUtil.initDataSource();
 
-		// YungouMonitoringServer.selectGoodsInfo();
+		 YungouMonitoringServer.selectGoodsInfo();
 		// YungouMonitoringServer.selectYungouRecord();
 
-		// ManagerAjaxServicesImpl.getManagerAjaxServices().addUserTime();
 	}
 
 }

@@ -13,16 +13,9 @@ public class YungouMonitoringServer {
 				.getGoodsInfosBySale();
 		if (goodsInfoList != null) {
 			for (GoodsInfo goodsInfo : goodsInfoList) {
-				CacheData.setGoodsInfoDate("" + goodsInfo.getGoodsID(), goodsInfo);
+				CacheData.setGoodsInfoDate(Integer.toString(goodsInfo.getGoodsID()), goodsInfo);
 			}
 		}
 		System.out.println("商品数据大小：" + CacheData.getGoodsInfoDate().size());
-		// new Timer().schedule(new TimerTask() {
-		// @Override
-		// public void run() {
-		// System.out.println("运行了");
-		// GetGoodsInfo.getRecGoodsList(1);
-		// }
-		// }, 2000, 100000);
 	}
 }
